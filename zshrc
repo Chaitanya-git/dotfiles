@@ -51,8 +51,8 @@ DISABLE_AUTO_UPDATE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git z)
-
+plugins=(git z )
+autoload zmv
 
 # User configuration
 
@@ -89,3 +89,6 @@ if [[ ! -d $ZSH_CACHE_DIR ]]; then
 fi
 
 source $ZSH/oh-my-zsh.sh
+# Install Ruby Gems to ~/.gems
+export GEM_HOME=$HOME/.gems
+export PATH=$PATH:$(ruby -e 'print Gem.user_dir')/bin

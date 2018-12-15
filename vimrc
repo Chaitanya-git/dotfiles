@@ -38,4 +38,8 @@ Plug 'ervandew/supertab'
 Plug 'tpope/vim-fugitive'
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'valloric/youcompleteme'
+Plug 'xolox/vim-notes'
+Plug 'xolox/vim-misc'
 call plug#end()
+let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"

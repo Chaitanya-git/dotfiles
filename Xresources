@@ -1,0 +1,25 @@
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer: true
+
+! scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress: true
+
+URxvt.font: xft:hack:size=10,\
+            xft:unifont:style=Sans-Serif:minspace=False,\
+            xft:siji:style=Regular:minspace=False,\
+            xft:DejaVu Sans:size=10
+URxvt.background: rgb:10/10/10
+URxvt.foreground: rgb:a0/a0/a0
+URxvt.color12: rgb:5c/5c/ff
+URxvt.letterSpace: -1
+
+URxvt.perl-ext-common: default,matcher
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1
+
+URxvt.perl-ext: default,url-select
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.url-select.launcher: /usr/bin/xdg-open
+URxvt.url-select.underline: true
+URxvt.scrollBar: false
+URxvt.print-pipe: "cat > ~/terminalOutput.txt"
