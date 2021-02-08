@@ -7,7 +7,7 @@ ZSH=/usr/share/oh-my-zsh/
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="agnoster"
+ZSH_THEME="gentoo"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -91,4 +91,9 @@ fi
 source $ZSH/oh-my-zsh.sh
 # Install Ruby Gems to ~/.gems
 export GEM_HOME=$HOME/.gems
-export PATH=$PATH:$(ruby -e 'print Gem.user_dir')/bin
+export PATH=$PATH:$(ruby -e 'print Gem.user_dir')/bin:~/.local/bin:~/.cargo/bin
+
+#aliases
+alias vim="nvim"
+alias vi="nvim"
+alias icat="kitty +kitten icat"

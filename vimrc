@@ -28,6 +28,14 @@ set showmatch "highlight matching brackets
 set incsearch "search as characters are entered
 set hlsearch "highlight search matches
 set number "set line numbers"
+set encoding=utf-8
+:set number relativenumber
+
+:augroup numbertoggle
+:  autocmd!
+:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+:augroup END
 
 "turn of hlsearch once you move on
 
@@ -38,8 +46,45 @@ Plug 'ervandew/supertab'
 Plug 'tpope/vim-fugitive'
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'valloric/youcompleteme'
-Plug 'xolox/vim-notes'
-Plug 'xolox/vim-misc'
+"Plug 'valloric/youcompleteme'
+"Plug 'xolox/vim-notes'
+"Plug 'xolox/vim-misc'
+
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+
+Plug 'deoplete-plugins/deoplete-jedi'
+Plug 'nvim-treesitter/nvim-treesitter'
+
+" Track the engine.
+Plug 'SirVer/ultisnips'
+
+" Snippets are separated from the engine. Add this if you want them:
+Plug 'honza/vim-snippets'
+
 call plug#end()
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:deoplete#enable_at_startup = 1
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+
+" Put plugins and dictionaries in this dir (also on Windows)
+let vimDir = '$HOME/.vim'
+let &runtimepath.=','.vimDir
+
+" Keep undo history across sessions by storing it in a file
+if has('persistent_undo')
+    let myUndoDir = expand(vimDir . '/undodir')
+    " Create dirs
+    call system('mkdir ' . vimDir)
+    call system('mkdir ' . myUndoDir)
+    let &undodir = myUndoDir
+    set undofile
+endif
